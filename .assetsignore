@@ -1,0 +1,7 @@
+.git
+.git/**
+.wrangler
+.wrangler/**
+.github
+.github/**
+README.md
