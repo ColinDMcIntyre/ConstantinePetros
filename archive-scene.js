@@ -28,6 +28,7 @@ function setupArchive(stage) {
   let lastWheelSelection = 0;
   let hitTestFolio = null;
   let lastTouchTap = null;
+  let opening = false;
 
   function folioAt(event) {
     const button = event.target?.closest?.('[data-folio-select]');
@@ -37,7 +38,8 @@ function setupArchive(stage) {
   }
 
   function openFolio(index) {
-    if (index === undefined || !pages[index]) return;
+    if (opening || index === undefined || !pages[index]) return;
+    opening = true;
     window.location.assign(pages[index].href);
   }
 
