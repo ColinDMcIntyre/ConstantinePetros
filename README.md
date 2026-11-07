@@ -25,6 +25,12 @@ To publish with Cloudflare Pages, connect the `main` branch and configure the pr
 
 New deployments **must include** `archive-scene.js` and `site-effects.js` beside the HTML and CSS. If the Cloudflare project is not set up to deploy from this GitHub repository, pushing commits alone will not publish changes.
 
+## Embedded vehicle exhibit
+
+The public-record page includes an optional, click-to-load iframe for [Porsche 356 Speedster](https://sketchfab.com/3d-models/porsche-356-speedster-27468cdce6fe444f86341858f49846af), a third-party 3D model by **Virtualgeo s.r.l.** hosted by **Sketchfab**. The model is for illustration only: it is not evidence of the specific vehicle involved in the case, and its year/configuration should not be treated as established facts.
+
+The viewer is **not requested on initial page load**. `site-effects.js` creates the iframe only when a visitor activates the exhibit button. The page provides a direct Sketchfab link for visitors whose browser blocks the embed or who choose not to use the iframe. Sketchfab maintains the interactive content; we do not host the 3D asset or claim its ownership.
+
 ## Editorial accuracy
 
 The public-record page distinguishes Petros's disputed claims from independent court findings. The site owner's corrections concerning probation, restitution, and a claim involving Farmers Insurance are presented as **Petros's account**, not certified case findings. Confirm these details with the case documents before treating them as independently verified.
