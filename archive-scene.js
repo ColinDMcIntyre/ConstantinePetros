@@ -2,7 +2,8 @@
  * Progressive archive selector. Its HTML links work without WebGL.
  * Click/tap a visible folio to bring it forward; wheel over the stage to browse
  * (at the endpoints, wheel resumes normal page scrolling); swipe horizontally
- * on touch screens or use arrow keys. "Open selected" performs navigation.
+ * on touch screens or use arrow keys. Double-click / double-tap a folio to
+ * open its page; "Open selected" is also provided for explicit navigation.
  */
 const archiveStage = document.querySelector('[data-archive-stage]');
 if (archiveStage) setupArchive(archiveStage);
@@ -25,6 +26,27 @@ function setupArchive(stage) {
   let suppressClickUntil = 0;
   let wheelSum = 0;
   let lastWheelSelection = 0;
+  let hitTestFolio = null;
+  let lastTouchTap = null;
+
+  function folioAt(event) {
+    const button = event.target?.closest?.('[data-folio-select]');
+    if (button) return Number(button.dataset.folioSelect);
+    if (event.target === canvas && hitTestFolio) return hitTestFolio(event);
+    return undefined;
+  }
+
+  function openFolio(index) {
+    if (index === undefined || !pages[index]) return;
+    window.location.assign(pages[index].href);
+  }
+
+  stage.addEventListener('dblclick', (event) => {
+    const index = folioAt(event);
+    if (index === undefined) return;
+    select(index);
+    openFolio(index);
+  });
 
   function select(index) {
     if (index < 0 || index >= pages.length) return false;
@@ -100,10 +122,34 @@ function setupArchive(stage) {
     const dx = event.clientX - touchPoint.x;
     const dy = event.clientY - touchPoint.y;
     touchPoint = null;
-    if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.15) return;
-    const direction = dx < 0 ? 1 : -1;
-    select(Math.min(2, Math.max(0, selected + direction)));
-    suppressClickUntil = performance.now() + 420;
+    const now = performance.now();
+    if (Math.abs(dx) >= 45 && Math.abs(dx) >= Math.abs(dy) * 1.15) {
+      const direction = dx < 0 ? 1 : -1;
+      select(Math.min(2, Math.max(0, selected + direction)));
+      lastTouchTap = null;
+      suppressClickUntil = now + 420;
+      return;
+    }
+    // Vertical page scroll should never count as a tap.
+    if (Math.abs(dx) > 18 || Math.abs(dy) > 18) {
+      lastTouchTap = null;
+      return;
+    }
+    const index = folioAt(event);
+    if (index === undefined) {
+      lastTouchTap = null;
+      return;
+    }
+    const isDoubleTap = lastTouchTap &&
+      lastTouchTap.index === index &&
+      now - lastTouchTap.time <= 380 &&
+      Math.hypot(event.clientX - lastTouchTap.x, event.clientY - lastTouchTap.y) < 48;
+    select(index);
+    suppressClickUntil = now + 450;
+    lastTouchTap = isDoubleTap
+      ? null
+      : { index, time: now, x: event.clientX, y: event.clientY };
+    if (isDoubleTap) openFolio(index);
   });
   stage.addEventListener('pointercancel', () => { touchPoint = null; });
 
@@ -241,6 +287,9 @@ function setupArchive(stage) {
       raycaster.setFromCamera(pointer, camera);
       return raycaster.intersectObjects(folios.map(({ mesh }) => mesh), false)[0]?.object?.userData?.folioIndex;
     }
+
+    // Share the raycaster for desktop double-click and mobile double-tap.
+    hitTestFolio = pick;
 
     // The canvas is interactive on mobile as well as desktop.
     canvas.addEventListener('click', (event) => {
