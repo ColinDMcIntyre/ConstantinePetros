@@ -9,6 +9,12 @@
     <link rel="canonical" href="https://constantinepetros.com/" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="stylesheet" href="styles.css" />
+    <meta name="theme-color" content="#0e2138" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <script type="importmap">
+      { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js" } }
+    </script>
+    <script type="module" src="/archive-scene.js"></script>
 
     <meta property="og:title" content="Constantine Petros | Profile, Business & Public Record" />
     <meta property="og:description" content="A central profile for Constantine Petros with business information, background, and a separately documented public-record section." />
@@ -65,16 +71,45 @@ html{background:#f5f1e8}body{margin:0;background:#f5f1e8;color:#111b2c}
 
     <main id="top">
       <article>
-        <section class="hero page-shell">
-          <div class="kicker">Profile &amp; public record</div>
-          <h1>Constantine Petros</h1>
-          <p class="dek">Background, business information, and public-record context — organized so that readers can distinguish the person from any single event.</p>
-          <div class="byline-row">
-            <div class="monogram" aria-hidden="true">CP</div>
-            <div>
-              <p>Profile: <strong>Constantine Petros</strong></p>
-              <p class="muted">California · Business &amp; public-record information</p>
+        <section class="hero hero--immersive page-shell">
+          <div class="hero-copy">
+            <div class="kicker">Profile &amp; public record</div>
+            <h1>Constantine Petros</h1>
+            <p class="dek">Background, business information, and public-record context — organized so readers can distinguish the person from any single event.</p>
+            <div class="hero-actions">
+              <a class="hero-action-primary" href="/about/">Explore profile <span aria-hidden="true">→</span></a>
+              <a class="hero-action-secondary" href="/public-record/">View public record <span aria-hidden="true">↗</span></a>
             </div>
+            <div class="byline-row">
+              <div class="monogram" aria-hidden="true">CP</div>
+              <div>
+                <p>Profile: <strong>Constantine Petros</strong></p>
+                <p class="muted">California · Business &amp; public-record information</p>
+              </div>
+            </div>
+          </div>
+          <div class="archive-showcase">
+            <div class="archive-stage" data-archive-stage role="img" aria-label="Decorative layered archive folders representing profile, business and public records. The links below open each page.">
+              <div class="archive-stage-label">THE RECORD / ARCHIVE INDEX</div>
+              <canvas class="archive-canvas" data-archive-canvas aria-hidden="true"></canvas>
+              <div class="archive-fallback" aria-hidden="true">
+                <div class="archive-folio archive-folio--profile">
+                  <small>01 / The Record</small><strong>Profile</strong><i></i>
+                </div>
+                <div class="archive-folio archive-folio--business">
+                  <small>02 / The Record</small><strong>Business</strong><i></i>
+                </div>
+                <div class="archive-folio archive-folio--record">
+                  <small>03 / The Record</small><strong>Public record</strong><i></i>
+                </div>
+              </div>
+              <div class="archive-stage-caption">THREE DISTINCT PARTS. ONE CONTEXTUAL RECORD.</div>
+            </div>
+            <nav class="archive-links" aria-label="Explore the archive">
+              <a href="/about/" class="archive-link" data-folio-link="0"><span>01 / PROFILE</span><strong>Background →</strong></a>
+              <a href="/business/" class="archive-link" data-folio-link="1"><span>02 / BUSINESS</span><strong>Company records →</strong></a>
+              <a href="/public-record/" class="archive-link" data-folio-link="2"><span>03 / CASE</span><strong>Public record →</strong></a>
+            </nav>
           </div>
         </section>
 
