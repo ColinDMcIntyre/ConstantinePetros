@@ -15,7 +15,7 @@ Static, multi-page editorial site. There is no required build step and no JavaSc
 
 All important content, links, headings, metadata, and JSON-LD are static HTML; neither Three.js nor client-side scripting is needed to read or navigate the site. Animations respect reduced-motion preferences, and low-capability devices use the CSS fallback.
 
-The archive cards support direct click/tap selection with foreground depth transitions, horizontal touch swiping, mouse-wheel browsing while hovered (with normal page scrolling at the first/last item), and keyboard arrows/Home/End. A separate **Open selected** link navigates to the highlighted page; the three static page links remain accessible. The selectable CSS cards work if WebGL is unavailable.
+The archive cards support direct click/tap selection with foreground depth transitions, double-click or double-tap to open a specific page, horizontal touch swiping, mouse-wheel browsing while hovered (with normal page scrolling at the first/last item), and keyboard arrows/Home/End. A separate **Open selected** link navigates to the highlighted page; the three static page links remain accessible. The selectable CSS cards work if WebGL is unavailable.
 
 ## Hosting / publishing
 
