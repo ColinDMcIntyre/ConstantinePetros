@@ -1445,11 +1445,11 @@ body { overflow-x: clip; }
 
 /* ===== INTERACTIVE ARCHIVE SELECTOR ===== */
 .archive-stage {
-  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
   outline-offset: 4px;
 }
 .archive-stage:focus-visible { outline: 3px solid var(--red); }
-.archive-stage .archive-canvas { touch-action: pan-y; }
+.archive-stage .archive-canvas { touch-action: pan-y pinch-zoom; }
 .archive-stage.three-ready .archive-canvas {
   pointer-events: auto;
   cursor: pointer;
