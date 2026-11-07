@@ -9,11 +9,13 @@ Static, multi-page editorial site. There is no required build step and no JavaSc
 - `business/index.html`: Business-record material.
 - `public-record/index.html`: Attributed account, chronology, and court-resource link.
 - `styles.css`: Shared responsive design and CSS 3D fallback.
-- `archive-scene.js`: Optional Three.js homepage enhancement. Dynamically imports pinned Three.js 0.180.0 from jsDelivr only on supported desktop displays.
+- `archive-scene.js`: Optional Three.js homepage enhancement. Dynamically imports pinned Three.js 0.180.0 from jsDelivr on capable desktop and mobile devices.
 - `site-effects.js`: Nonessential chronology focus effect.
 - `robots.txt` and `sitemap.xml`: Crawl access and canonical page discovery.
 
 All important content, links, headings, metadata, and JSON-LD are static HTML; neither Three.js nor client-side scripting is needed to read or navigate the site. Animations respect reduced-motion preferences, and low-capability devices use the CSS fallback.
+
+The archive cards support direct click/tap selection with foreground depth transitions, horizontal touch swiping, mouse-wheel browsing while hovered (with normal page scrolling at the first/last item), and keyboard arrows/Home/End. A separate **Open selected** link navigates to the highlighted page; the three static page links remain accessible. The selectable CSS cards work if WebGL is unavailable.
 
 ## Hosting / publishing
 
