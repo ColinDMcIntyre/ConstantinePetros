@@ -1,36 +1,45 @@
-# Constantine Petros — The Record
+# The Record — Constantine Petros
 
-Static, multi-page editorial site. There is no required build step and no JavaScript framework.
+Four-page static editorial archive; no build step or framework. All substantive copy, navigation, citations and headings are rendered in HTML. JavaScript is a progressive enhancement for the homepage archive, timeline, and opt-in 3D vehicle viewer.
 
-## Pages and assets
+## Pages
 
-- `index.html`: Homepage with semantic content and accessible archive navigation.
-- `about/index.html`: Biographical material.
-- `business/index.html`: Business-record material.
-- `public-record/index.html`: Attributed account, chronology, and court-resource link.
-- `styles.css`: Shared responsive design and CSS 3D fallback.
-- `archive-scene.js`: Optional Three.js homepage enhancement. Dynamically imports pinned Three.js 0.180.0 from jsDelivr on capable desktop and mobile devices.
-- `site-effects.js`: Nonessential chronology focus effect.
-- `robots.txt` and `sitemap.xml`: Crawl access and canonical page discovery.
+- `index.html` — Immersive archive homepage: public profile, business, and public-record pathways.
+- `about/index.html` — Source-limited public profile. No speculative biography.
+- `business/index.html` — California filing summary for Sonoma Shed, LLC and official registry link.
+- `public-record/index.html` — Contextual report on the 2016–2017 Porsche insurance case, questions raised by a competing account, linked historical reporting, and official access instructions for the criminal court file.
 
-All important content, links, headings, metadata, and JSON-LD are static HTML; neither Three.js nor client-side scripting is needed to read or navigate the site. Animations respect reduced-motion preferences, and low-capability devices use the CSS fallback.
+Shared visual system: `styles.css`.
+- `archive-scene.js` — Three.js progressive-enhancement scene, pinned to Three.js 0.180.0 via CDN importmap on home only. The CSS archive remains interactive if WebGL is unavailable. Single click/tap selects; double click/tap opens; scroll, swipe and keyboard arrows change selection.
+- `site-effects.js` — Timeline emphasis and a Sketchfab iframe loaded only on explicit visitor activation.
+- `favicon.svg` — Site icon.
+- `robots.txt` / `sitemap.xml` — Crawl configuration and discovery.
 
-The archive cards support direct click/tap selection with foreground depth transitions, double-click or double-tap to open a specific page, horizontal touch swiping, mouse-wheel browsing while hovered (with normal page scrolling at the first/last item), and keyboard arrows/Home/End. A separate **Open selected** link navigates to the highlighted page; the three static page links remain accessible. The selectable CSS cards work if WebGL is unavailable.
+## Search / AI search
 
-## Hosting / publishing
+Every page uses a unique title, description, canonical URL, accessible HTML headings, a static source-linked body, internal links, BreadcrumbList JSON-LD, and a WebPage or Article/ProfilePage JSON-LD node. A common WebSite and Person entity use stable @id values. The case article includes dated source references, a concise summary, primary-record instructions, and short visible Q&A.
 
-This repository contains the **site source**, not the Cloudflare Worker implementation.
+Google's AI Overview / AI Mode guidance says conventional SEO and helpful, unique, reliably sourced, indexed HTML are the prerequisites; **there is no guaranteed placement**, no special AI schema required, and no reason to create an llms.txt solely for Google. See: https://developers.google.com/search/docs/appearance/ai-features
 
-To publish with Cloudflare Pages, connect the `main` branch and configure the project to serve the repository's root directory as its static output, with no build command (subject to the current Cloudflare UI). For a Cloudflare Worker using **Static Assets**, deploy the entire site directory as assets; editing an empty Worker JavaScript file does not edit or redeploy these HTML/CSS/JS assets.
+After publishing:
+1. Confirm the site is serving the updated HTML and assets over the final canonical URLs, including the /public-record/ page.
+2. Verify domain ownership in Google Search Console.
+3. Submit https://constantinepetros.com/sitemap.xml and inspect each canonical URL with URL Inspection; request indexing if needed.
+4. Check Google indexing, performance, structured data, mobile accessibility, and Core Web Vitals. Monitor AI-related search visibility through available Search Console reports.
+5. Publish original, reviewable supporting primary documents **when legitimately available and authorized**, not invented source material.
 
-New deployments **must include** `archive-scene.js` and `site-effects.js` beside the HTML and CSS. If the Cloudflare project is not set up to deploy from this GitHub repository, pushing commits alone will not publish changes.
+### Accuracy and attribution
 
-## Embedded vehicle exhibit
+The 2016 Insurance Journal article and 2017 Bay City News/SFGate article provide the historic reporting. A separate account supplied for the site disputes certain sentencing, payment, knowledge and final-disposition details. Those disputes are explicitly distinguished from independently verified court records; this site does **not** claim to host the final certified court documents or to have performed an unrelated newsroom investigation.
 
-The public-record page includes an optional, click-to-load iframe for [Porsche 356 Speedster](https://sketchfab.com/3d-models/porsche-356-speedster-27468cdce6fe444f86341858f49846af), a third-party 3D model by **Virtualgeo s.r.l.** hosted by **Sketchfab**. The model is for illustration only: it is not evidence of the specific vehicle involved in the case, and its year/configuration should not be treated as established facts.
+The Porsche 356 Speedster Sketchfab model is an illustrative third-party 3D asset hosted by Sketchfab and credited in the page, not the particular disputed vehicle.
 
-The viewer is **not requested on initial page load**. `site-effects.js` creates the iframe only when a visitor activates the exhibit button. The page provides a direct Sketchfab link for visitors whose browser blocks the embed or who choose not to use the iframe. Sketchfab maintains the interactive content; we do not host the 3D asset or claim its ownership.
+The Sonoma Shed, LLC facts are sourced to a third-party filing summary whose record date is March 25, 2026. The page links to the California Secretary of State for current status.
 
-## Editorial accuracy
+## Deployment
 
-The public-record page distinguishes Petros's disputed claims from independent court findings. The site owner's corrections concerning probation, restitution, and a claim involving Farmers Insurance are presented as **Petros's account**, not certified case findings. Confirm these details with the case documents before treating them as independently verified.
+The repository contains static files and does not contain a configured Cloudflare Worker. GitHub commits alone do **not** guarantee a public deployment.
+
+For Cloudflare Pages, connect the `main` branch and publish the repository root with no build command where the hosting configuration supports it. For a Cloudflare Worker with Static Assets, publish the entire site tree so that nested `/about/`, `/business/`, and `/public-record/` paths resolve to their index files. Confirm `styles.css`, `archive-scene.js`, and `site-effects.js` are served in production.
+
+Do not suppress snippets, disallow Googlebot, or introduce an indiscriminate Cloudflare challenge for search engine crawlers if search visibility is the goal.
