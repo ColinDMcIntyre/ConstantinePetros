@@ -30,7 +30,7 @@ After publishing:
 
 ### Accuracy and attribution
 
-The November 2016 Insurance Journal article supplies the linked historical coverage. The Bay City News/SFGate article has been removed from the website, including its citations and the statements relying solely on its reporting. Petros's account of later case activity is attributed to him rather than represented as a court finding. The site links to Sonoma County Superior Court's record-request process, including official request form CR-01, **not** directly to the underlying case filings. No court order, docket, or authenticated document was obtained as part of the November 9, 2026 copy update.
+The November 2016 Insurance Journal article supplies the linked historical coverage. The page links to Sonoma County Superior Court's records process for researching any later developments. Petros's account of later case activity is attributed to him rather than represented as a court finding. The site links to Sonoma County Superior Court's record-request process, including official request form CR-01, **not** directly to the underlying case filings. No court order, docket, or authenticated document was obtained as part of the November 9, 2026 copy update.
 
 The Porsche 356 Speedster Sketchfab model is an illustrative third-party 3D asset hosted by Sketchfab and credited in the page, not the particular disputed vehicle.
 
