@@ -7,7 +7,7 @@ Four-page static editorial archive; no build step or framework. All substantive 
 - `index.html` — Immersive archive homepage: public profile, business, and public-record pathways.
 - `about/index.html` — Source-limited public profile. No speculative biography.
 - `business/index.html` — California filing summary for Sonoma Shed, LLC and official registry link.
-- `public-record/index.html` — Review of the 2016 Porsche insurance-case reporting, Petros's account of the subsequent case history, original source links, and official court-record request instructions.
+- `public-record/index.html` — Overview of the 2016 Porsche case, pretrial dismissal statement, original reporting, and official court-record request instructions.
 
 Shared visual system: `styles.css`.
 - `archive-scene.js` — Three.js progressive-enhancement scene, pinned to Three.js 0.180.0 via CDN importmap on home only. The CSS archive remains interactive if WebGL is unavailable. Single click/tap selects; double click/tap opens; scroll, swipe and keyboard arrows change selection.
@@ -30,7 +30,7 @@ After publishing:
 
 ### Accuracy and attribution
 
-The November 2016 Insurance Journal article supplies the linked historical coverage. The page links to Sonoma County Superior Court's records process for researching any later developments. Petros's account of later case activity is attributed to him rather than represented as a court finding. The site links to Sonoma County Superior Court's record-request process, including official request form CR-01, **not** directly to the underlying case filings. No court order, docket, or authenticated document was obtained as part of the November 9, 2026 copy update.
+The November 2016 Insurance Journal article documents the initial charges. The statement that felony charges were dropped before trial following the introduction of new evidence was supplied by the site owner; the editing process has not independently reviewed an official order or docket confirming the stated disposition. Public court links lead to record-request instructions, including form CR-01, **not** the actual case filings. Do not describe these links as proof of a dismissal.
 
 The Porsche 356 Speedster Sketchfab model is an illustrative third-party 3D asset hosted by Sketchfab and credited in the page, not the particular disputed vehicle.
 
